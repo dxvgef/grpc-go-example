@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package pb;
+
+import "google/api/annotations.proto";
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+// 不生成XXX开头的方法
+option (gogoproto.goproto_unkeyed_all) = false;
+option (gogoproto.goproto_unrecognized_all) = false;
+option (gogoproto.goproto_sizecache_all) = false;
+
+// 定义服务
+service User {
+    // 定义rpc方法
+    rpc Login (LoginRequest) returns (TokenResponse) {
+        option (google.api.http) = {
+            post: "/user/login"
+            body: "*"
+        };
+    }
+    rpc List (ListRequest) returns (ListResponse) {
+        option (google.api.http) = {
+            get: "/user/list"
+        };
+    }
+}
+
+// 登录请求
+message LoginRequest {
+    string username = 1;
+    string password = 2;
+}
+
+// 响应token
+message TokenResponse {
+    string token = 1;
+}
+
+// 列表请求
+message ListRequest {
+    repeated string columns = 1;    // 可查询的字段
+    int32 page = 2; // 页码
+    int32 pageSize = 3; // 页大小
+}
+// 列表响应
+message ListResponse {
+    repeated UserListModel rows = 1;
+    int32 total = 2;
+}
+
+// 用户列表字段
+message UserListModel {
+    int64 id = 2 [(gogoproto.jsontag) = "id,string", (gogoproto.moretags) = "pg:\"id\""];
+    string username = 3 [(gogoproto.moretags) = "pg:\"username\""];
+    int64 createTime = 4 [(gogoproto.moretags) = "pg:\"create_time\""];
+}
