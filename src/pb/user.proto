@@ -13,7 +13,6 @@ option (gogoproto.goproto_sizecache_all) = false;
 
 // 定义服务
 service User {
-    // 定义rpc方法
     rpc Login (LoginRequest) returns (TokenResponse) {
         option (google.api.http) = {
             post: "/user/login"
@@ -46,8 +45,8 @@ message ListRequest {
 }
 // 列表响应
 message ListResponse {
-    repeated UserListModel rows = 1;
-    int32 total = 2;
+    repeated UserListModel rows = 1;    // 记录集
+    int32 total = 2;    // 记录总数
 }
 
 // 用户列表字段
