@@ -17,7 +17,7 @@ type User struct {
 	MetaData *MetaData // 组合元数据类进来
 }
 
-func (self *User) Login(ctx context.Context, req *pb.LoginRequest) (*pb.TokenResponse, error) {
+func (self *User) Login(ctx context.Context, req *pb.UserLoginRequest) (*pb.TokenResponse, error) {
 	var resp pb.TokenResponse
 
 	// 验证请求参数
@@ -41,7 +41,7 @@ func (self *User) Login(ctx context.Context, req *pb.LoginRequest) (*pb.TokenRes
 	return &resp, nil
 }
 
-func (self *User) List(ctx context.Context, req *pb.ListRequest) (*pb.ListResponse, error) {
+func (self *User) List(ctx context.Context, req *pb.UserListRequest) (*pb.UserListResponse, error) {
 
 	// 执行并获得认证结果
 	if err := self.MetaData.AuthToken(ctx); err != nil {
@@ -54,7 +54,7 @@ func (self *User) List(ctx context.Context, req *pb.ListRequest) (*pb.ListRespon
 		return nil, status.Error(codes.InvalidArgument, "Columns参数值无效")
 	}
 
-	var resp pb.ListResponse
+	var resp pb.UserListResponse
 
 	total, err := DB.Model().Table("users").
 		Column(req.Columns...).

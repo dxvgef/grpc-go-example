@@ -11,15 +11,16 @@ option (gogoproto.goproto_unkeyed_all) = false;
 option (gogoproto.goproto_unrecognized_all) = false;
 option (gogoproto.goproto_sizecache_all) = false;
 
+
 // 定义Content服务
 service Content {
-    rpc Add (AddRequest) returns (AddResponse) {
+    rpc Add (ContentAddRequest) returns (ContentAddResponse) {
         option (google.api.http) = {
             post: "/content/add"
             body: "*"
         };
     }
-    rpc List (ListRequest) returns (ListResponse) {
+    rpc List (ContentListRequest) returns (ContentListResponse) {
         option (google.api.http) = {
             get: "/content/list"
         };
@@ -27,26 +28,26 @@ service Content {
 }
 
 // 增加请求
-message AddRequest {
+message ContentAddRequest {
     string title = 1;
     string body = 2;
 }
 
 // 增加响应
-message AddResponse {
+message ContentAddResponse {
     int64 id = 1;
 }
 
 
 // 列表请求
-message ListRequest {
+message ContentListRequest {
     repeated string columns = 1;    // 可查询的字段
     int32 page = 2; // 页码
     int32 pageSize = 3; // 页大小
 }
 // 列表响应
-message ListResponse {
-    repeated UserListModel rows = 1;    // 记录集
+message ContentListResponse {
+    repeated ContentListModel rows = 1;    // 记录集
     int32 total = 2;    // 记录总数
 }
 

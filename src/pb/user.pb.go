@@ -29,23 +29,23 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // 登录请求
-type LoginRequest struct {
+type UserLoginRequest struct {
 	Username string `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty"`
 	Password string `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
 }
 
-func (m *LoginRequest) Reset()         { *m = LoginRequest{} }
-func (m *LoginRequest) String() string { return proto.CompactTextString(m) }
-func (*LoginRequest) ProtoMessage()    {}
-func (*LoginRequest) Descriptor() ([]byte, []int) {
+func (m *UserLoginRequest) Reset()         { *m = UserLoginRequest{} }
+func (m *UserLoginRequest) String() string { return proto.CompactTextString(m) }
+func (*UserLoginRequest) ProtoMessage()    {}
+func (*UserLoginRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_116e343673f7ffaf, []int{0}
 }
-func (m *LoginRequest) XXX_Unmarshal(b []byte) error {
+func (m *UserLoginRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *LoginRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *UserLoginRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_LoginRequest.Marshal(b, m, deterministic)
+		return xxx_messageInfo_UserLoginRequest.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -55,26 +55,26 @@ func (m *LoginRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error)
 		return b[:n], nil
 	}
 }
-func (m *LoginRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_LoginRequest.Merge(m, src)
+func (m *UserLoginRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UserLoginRequest.Merge(m, src)
 }
-func (m *LoginRequest) XXX_Size() int {
+func (m *UserLoginRequest) XXX_Size() int {
 	return m.Size()
 }
-func (m *LoginRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_LoginRequest.DiscardUnknown(m)
+func (m *UserLoginRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_UserLoginRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_LoginRequest proto.InternalMessageInfo
+var xxx_messageInfo_UserLoginRequest proto.InternalMessageInfo
 
-func (m *LoginRequest) GetUsername() string {
+func (m *UserLoginRequest) GetUsername() string {
 	if m != nil {
 		return m.Username
 	}
 	return ""
 }
 
-func (m *LoginRequest) GetPassword() string {
+func (m *UserLoginRequest) GetPassword() string {
 	if m != nil {
 		return m.Password
 	}
@@ -127,24 +127,24 @@ func (m *TokenResponse) GetToken() string {
 }
 
 // 列表请求
-type ListRequest struct {
+type UserListRequest struct {
 	Columns  []string `protobuf:"bytes,1,rep,name=columns,proto3" json:"columns,omitempty"`
 	Page     int32    `protobuf:"varint,2,opt,name=page,proto3" json:"page,omitempty"`
 	PageSize int32    `protobuf:"varint,3,opt,name=pageSize,proto3" json:"pageSize,omitempty"`
 }
 
-func (m *ListRequest) Reset()         { *m = ListRequest{} }
-func (m *ListRequest) String() string { return proto.CompactTextString(m) }
-func (*ListRequest) ProtoMessage()    {}
-func (*ListRequest) Descriptor() ([]byte, []int) {
+func (m *UserListRequest) Reset()         { *m = UserListRequest{} }
+func (m *UserListRequest) String() string { return proto.CompactTextString(m) }
+func (*UserListRequest) ProtoMessage()    {}
+func (*UserListRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_116e343673f7ffaf, []int{2}
 }
-func (m *ListRequest) XXX_Unmarshal(b []byte) error {
+func (m *UserListRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *ListRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *UserListRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_ListRequest.Marshal(b, m, deterministic)
+		return xxx_messageInfo_UserListRequest.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -154,33 +154,33 @@ func (m *ListRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) 
 		return b[:n], nil
 	}
 }
-func (m *ListRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListRequest.Merge(m, src)
+func (m *UserListRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UserListRequest.Merge(m, src)
 }
-func (m *ListRequest) XXX_Size() int {
+func (m *UserListRequest) XXX_Size() int {
 	return m.Size()
 }
-func (m *ListRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_ListRequest.DiscardUnknown(m)
+func (m *UserListRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_UserListRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_ListRequest proto.InternalMessageInfo
+var xxx_messageInfo_UserListRequest proto.InternalMessageInfo
 
-func (m *ListRequest) GetColumns() []string {
+func (m *UserListRequest) GetColumns() []string {
 	if m != nil {
 		return m.Columns
 	}
 	return nil
 }
 
-func (m *ListRequest) GetPage() int32 {
+func (m *UserListRequest) GetPage() int32 {
 	if m != nil {
 		return m.Page
 	}
 	return 0
 }
 
-func (m *ListRequest) GetPageSize() int32 {
+func (m *UserListRequest) GetPageSize() int32 {
 	if m != nil {
 		return m.PageSize
 	}
@@ -188,23 +188,23 @@ func (m *ListRequest) GetPageSize() int32 {
 }
 
 // 列表响应
-type ListResponse struct {
+type UserListResponse struct {
 	Rows  []*UserListModel `protobuf:"bytes,1,rep,name=rows,proto3" json:"rows,omitempty"`
 	Total int32            `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
 }
 
-func (m *ListResponse) Reset()         { *m = ListResponse{} }
-func (m *ListResponse) String() string { return proto.CompactTextString(m) }
-func (*ListResponse) ProtoMessage()    {}
-func (*ListResponse) Descriptor() ([]byte, []int) {
+func (m *UserListResponse) Reset()         { *m = UserListResponse{} }
+func (m *UserListResponse) String() string { return proto.CompactTextString(m) }
+func (*UserListResponse) ProtoMessage()    {}
+func (*UserListResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_116e343673f7ffaf, []int{3}
 }
-func (m *ListResponse) XXX_Unmarshal(b []byte) error {
+func (m *UserListResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *ListResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *UserListResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_ListResponse.Marshal(b, m, deterministic)
+		return xxx_messageInfo_UserListResponse.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -214,26 +214,26 @@ func (m *ListResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error)
 		return b[:n], nil
 	}
 }
-func (m *ListResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListResponse.Merge(m, src)
+func (m *UserListResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UserListResponse.Merge(m, src)
 }
-func (m *ListResponse) XXX_Size() int {
+func (m *UserListResponse) XXX_Size() int {
 	return m.Size()
 }
-func (m *ListResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_ListResponse.DiscardUnknown(m)
+func (m *UserListResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_UserListResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_ListResponse proto.InternalMessageInfo
+var xxx_messageInfo_UserListResponse proto.InternalMessageInfo
 
-func (m *ListResponse) GetRows() []*UserListModel {
+func (m *UserListResponse) GetRows() []*UserListModel {
 	if m != nil {
 		return m.Rows
 	}
 	return nil
 }
 
-func (m *ListResponse) GetTotal() int32 {
+func (m *UserListResponse) GetTotal() int32 {
 	if m != nil {
 		return m.Total
 	}
@@ -302,47 +302,47 @@ func (m *UserListModel) GetCreateTime() int64 {
 }
 
 func init() {
-	proto.RegisterType((*LoginRequest)(nil), "pb.LoginRequest")
+	proto.RegisterType((*UserLoginRequest)(nil), "pb.UserLoginRequest")
 	proto.RegisterType((*TokenResponse)(nil), "pb.TokenResponse")
-	proto.RegisterType((*ListRequest)(nil), "pb.ListRequest")
-	proto.RegisterType((*ListResponse)(nil), "pb.ListResponse")
+	proto.RegisterType((*UserListRequest)(nil), "pb.UserListRequest")
+	proto.RegisterType((*UserListResponse)(nil), "pb.UserListResponse")
 	proto.RegisterType((*UserListModel)(nil), "pb.UserListModel")
 }
 
 func init() { proto.RegisterFile("user.proto", fileDescriptor_116e343673f7ffaf) }
 
 var fileDescriptor_116e343673f7ffaf = []byte{
-	// 466 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x54, 0x52, 0x41, 0x8b, 0x13, 0x31,
-	0x14, 0x6e, 0xa6, 0xad, 0x6b, 0x5f, 0x5b, 0xec, 0x86, 0x45, 0x86, 0x61, 0x99, 0x2e, 0x81, 0x85,
-	0x22, 0x6e, 0x07, 0x56, 0x4f, 0x0b, 0x5e, 0x8a, 0x78, 0x71, 0xbd, 0x8c, 0x2b, 0x1e, 0x65, 0xa6,
-	0x13, 0x63, 0x70, 0x9a, 0xc4, 0x49, 0x86, 0x05, 0x8f, 0x5e, 0xbd, 0x08, 0x5e, 0x3c, 0xf9, 0x7b,
-	0x3c, 0x2e, 0x78, 0xf1, 0x54, 0xa4, 0xf5, 0xe4, 0xb1, 0xbf, 0x60, 0x49, 0x32, 0xdd, 0xed, 0xde,
-	0xf2, 0xbd, 0xf7, 0xe5, 0xfb, 0xf2, 0xbd, 0x17, 0x80, 0x5a, 0xd3, 0x6a, 0xaa, 0x2a, 0x69, 0x24,
-	0x0e, 0x54, 0x1e, 0x1d, 0x32, 0x29, 0x59, 0x49, 0x93, 0x4c, 0xf1, 0x24, 0x13, 0x42, 0x9a, 0xcc,
-	0x70, 0x29, 0xb4, 0x67, 0x44, 0x27, 0x8c, 0x9b, 0x0f, 0x75, 0x3e, 0x9d, 0xcb, 0x45, 0xc2, 0x24,
-	0x93, 0x89, 0x2b, 0xe7, 0xf5, 0x7b, 0x87, 0x1c, 0x70, 0x27, 0x4f, 0x27, 0x2f, 0x60, 0x70, 0x2e,
-	0x19, 0x17, 0x29, 0xfd, 0x54, 0x53, 0x6d, 0x70, 0x04, 0xf7, 0xad, 0x9d, 0xc8, 0x16, 0x34, 0x44,
-	0x47, 0x68, 0xd2, 0x4b, 0x6f, 0xb0, 0xed, 0xa9, 0x4c, 0xeb, 0x4b, 0x59, 0x15, 0x61, 0xe0, 0x7b,
-	0x5b, 0x4c, 0x8e, 0x61, 0x78, 0x21, 0x3f, 0x52, 0x91, 0x52, 0xad, 0xa4, 0xd0, 0x14, 0x1f, 0x40,
-	0xd7, 0xd8, 0x42, 0xa3, 0xe2, 0x01, 0x79, 0x0b, 0xfd, 0x73, 0xae, 0xcd, 0xd6, 0x2d, 0x84, 0xbd,
-	0xb9, 0x2c, 0xeb, 0x85, 0xd0, 0x21, 0x3a, 0x6a, 0x4f, 0x7a, 0xe9, 0x16, 0x62, 0x0c, 0x1d, 0x95,
-	0x31, 0xea, 0x7c, 0xba, 0xa9, 0x3b, 0x7b, 0x7f, 0x46, 0x5f, 0xf3, 0xcf, 0x34, 0x6c, 0xbb, 0xfa,
-	0x0d, 0x26, 0x2f, 0x61, 0xe0, 0x85, 0x1b, 0xfb, 0x63, 0xe8, 0x54, 0xf2, 0xd2, 0xcb, 0xf6, 0x4f,
-	0xf7, 0xa7, 0x2a, 0x9f, 0xbe, 0xd1, 0xb4, 0xb2, 0x9c, 0x57, 0xb2, 0xa0, 0x65, 0xea, 0xda, 0xfe,
-	0x95, 0x26, 0x2b, 0x1b, 0x1f, 0x0f, 0xc8, 0x4f, 0x04, 0xc3, 0x3b, 0x6c, 0x3c, 0x81, 0x80, 0x17,
-	0x2e, 0x4a, 0x7b, 0x16, 0xfe, 0x5f, 0x8e, 0x7b, 0xbc, 0x78, 0xac, 0x4d, 0xc5, 0x05, 0xdb, 0x2c,
-	0xc7, 0x7b, 0x8a, 0x9d, 0x11, 0x5e, 0x90, 0x34, 0xe0, 0x05, 0x3e, 0xd9, 0x19, 0xa0, 0x1b, 0xd2,
-	0x6c, 0x7f, 0xb3, 0x1c, 0x0f, 0x2d, 0x65, 0x5b, 0x27, 0x3b, 0x33, 0x7d, 0x0a, 0x30, 0xaf, 0x68,
-	0x66, 0xe8, 0x05, 0x5f, 0xf8, 0x54, 0xed, 0xd9, 0xc1, 0x66, 0x39, 0x1e, 0xd9, 0x0b, 0xbe, 0xf3,
-	0xce, 0x70, 0x7b, 0x67, 0x87, 0x77, 0xfa, 0x15, 0x41, 0xc7, 0x3e, 0x10, 0x3f, 0x87, 0xae, 0x5b,
-	0x1f, 0x1e, 0xd9, 0x84, 0xbb, 0x9b, 0x8c, 0x5c, 0xe6, 0x3b, 0x3b, 0x21, 0x0f, 0xbf, 0xfc, 0xfe,
-	0xf7, 0x3d, 0x18, 0x91, 0x7e, 0x62, 0xfd, 0x93, 0xd2, 0xd2, 0xcf, 0xd0, 0x23, 0xfc, 0x0c, 0x3a,
-	0x36, 0x2a, 0x7e, 0xe0, 0x44, 0x6e, 0xf7, 0x13, 0x8d, 0x6e, 0x0b, 0x8d, 0x04, 0x76, 0x12, 0x03,
-	0x0c, 0x8d, 0x04, 0xd7, 0x66, 0x76, 0xf8, 0x6b, 0x15, 0xa3, 0xab, 0x55, 0x8c, 0xfe, 0xae, 0x62,
-	0xf4, 0x6d, 0x1d, 0xb7, 0x7e, 0xac, 0xe3, 0xd6, 0xd5, 0x3a, 0x6e, 0xfd, 0x59, 0xc7, 0xad, 0xfc,
-	0x9e, 0xfb, 0x68, 0x4f, 0xae, 0x03, 0x00, 0x00, 0xff, 0xff, 0xdb, 0x45, 0x54, 0x31, 0xc7, 0x02,
-	0x00, 0x00,
+	// 467 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x54, 0x52, 0x41, 0x8b, 0xd3, 0x40,
+	0x14, 0xee, 0xa4, 0xad, 0x6b, 0xdf, 0x5a, 0xec, 0x8e, 0x45, 0x42, 0x59, 0xd2, 0x65, 0x60, 0xa1,
+	0x88, 0xdb, 0xc0, 0xea, 0x69, 0x8f, 0x05, 0x41, 0x44, 0x11, 0xe2, 0x7a, 0xf2, 0x20, 0x49, 0x33,
+	0x8e, 0x83, 0xe9, 0x4c, 0xcc, 0x4c, 0x58, 0xf0, 0xe8, 0x2f, 0x10, 0x3c, 0xe8, 0xc9, 0xdf, 0xe3,
+	0xb1, 0xe0, 0xc5, 0x53, 0x91, 0xc6, 0x93, 0xc7, 0xfe, 0x02, 0x99, 0x99, 0xa4, 0xa4, 0xb7, 0x7c,
+	0xef, 0x7d, 0xf3, 0xbd, 0xef, 0x7b, 0x2f, 0x00, 0xa5, 0xa2, 0xc5, 0x3c, 0x2f, 0xa4, 0x96, 0xd8,
+	0xcb, 0x93, 0xc9, 0x29, 0x93, 0x92, 0x65, 0x34, 0x8c, 0x73, 0x1e, 0xc6, 0x42, 0x48, 0x1d, 0x6b,
+	0x2e, 0x85, 0x72, 0x8c, 0xc9, 0x05, 0xe3, 0xfa, 0x7d, 0x99, 0xcc, 0x97, 0x72, 0x15, 0x32, 0xc9,
+	0x64, 0x68, 0xcb, 0x49, 0xf9, 0xce, 0x22, 0x0b, 0xec, 0x97, 0xa3, 0x93, 0x67, 0x30, 0x7a, 0xad,
+	0x68, 0xf1, 0x5c, 0x32, 0x2e, 0x22, 0xfa, 0xb1, 0xa4, 0x4a, 0xe3, 0x09, 0xdc, 0x36, 0x23, 0x45,
+	0xbc, 0xa2, 0x3e, 0x3a, 0x43, 0xb3, 0x41, 0xb4, 0xc7, 0xa6, 0x97, 0xc7, 0x4a, 0xdd, 0xc8, 0x22,
+	0xf5, 0x3d, 0xd7, 0x6b, 0x30, 0x39, 0x87, 0xe1, 0xb5, 0xfc, 0x40, 0x45, 0x44, 0x55, 0x2e, 0x85,
+	0xa2, 0x78, 0x0c, 0x7d, 0x6d, 0x0a, 0xb5, 0x8a, 0x03, 0xe4, 0x0d, 0xdc, 0xb5, 0x23, 0xb9, 0xd2,
+	0xcd, 0x44, 0x1f, 0x8e, 0x96, 0x32, 0x2b, 0x57, 0x42, 0xf9, 0xe8, 0xac, 0x3b, 0x1b, 0x44, 0x0d,
+	0xc4, 0x18, 0x7a, 0x79, 0xcc, 0xa8, 0x9d, 0xd5, 0x8f, 0xec, 0xb7, 0xf3, 0xc0, 0xe8, 0x2b, 0xfe,
+	0x89, 0xfa, 0x5d, 0x5b, 0xdf, 0x63, 0xf2, 0xb2, 0xce, 0x63, 0xc5, 0x6b, 0x1b, 0xe7, 0xd0, 0x2b,
+	0xe4, 0x8d, 0x93, 0x3e, 0xbe, 0x3c, 0x99, 0xe7, 0xc9, 0xbc, 0xe1, 0xbc, 0x90, 0x29, 0xcd, 0x22,
+	0xdb, 0x76, 0x6e, 0x75, 0x9c, 0xd5, 0xb3, 0x1c, 0x20, 0x3f, 0x10, 0x0c, 0x0f, 0xd8, 0x78, 0x06,
+	0x1e, 0x4f, 0x6d, 0xa4, 0xee, 0xc2, 0xff, 0xb7, 0x99, 0x0e, 0x78, 0xfa, 0x50, 0xe9, 0x82, 0x0b,
+	0xb6, 0xdb, 0x4c, 0x8f, 0x72, 0x76, 0x45, 0x78, 0x4a, 0x22, 0x8f, 0xa7, 0xf8, 0xa2, 0xb5, 0x48,
+	0xbb, 0xac, 0xc5, 0xc9, 0x6e, 0x33, 0x1d, 0x1a, 0x4a, 0x53, 0x27, 0xad, 0xdd, 0x3e, 0x06, 0x58,
+	0x16, 0x34, 0xd6, 0xf4, 0x9a, 0xaf, 0x5c, 0xb2, 0xee, 0x62, 0xbc, 0xdb, 0x4c, 0x47, 0xe6, 0x81,
+	0xeb, 0xbc, 0xd5, 0xdc, 0xbc, 0x69, 0xf1, 0x2e, 0xbf, 0x21, 0xe8, 0x19, 0x83, 0xf8, 0x29, 0xf4,
+	0xed, 0x19, 0xf1, 0x78, 0x9f, 0xb0, 0x75, 0xd5, 0x89, 0xcd, 0x7d, 0x70, 0x1f, 0x72, 0xff, 0xf3,
+	0xaf, 0xbf, 0x5f, 0xbd, 0x11, 0x39, 0x0e, 0x8d, 0x87, 0x30, 0x33, 0xf4, 0x2b, 0xf4, 0x00, 0x3f,
+	0x81, 0x9e, 0x89, 0x8b, 0xef, 0xb5, 0x57, 0xd5, 0xe8, 0x8c, 0x0f, 0x8b, 0xb5, 0x14, 0xb6, 0x52,
+	0x77, 0x30, 0xd4, 0x52, 0x5c, 0xe9, 0xc5, 0xe9, 0xcf, 0x6d, 0x80, 0xd6, 0xdb, 0x00, 0xfd, 0xd9,
+	0x06, 0xe8, 0x4b, 0x15, 0x74, 0xbe, 0x57, 0x41, 0x67, 0x5d, 0x05, 0x9d, 0xdf, 0x55, 0xd0, 0x49,
+	0x6e, 0xd9, 0x1f, 0xf0, 0xd1, 0xff, 0x00, 0x00, 0x00, 0xff, 0xff, 0x68, 0x1e, 0x9f, 0xad, 0xdf,
+	0x02, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -357,8 +357,8 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type UserClient interface {
-	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*TokenResponse, error)
-	List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*ListResponse, error)
+	Login(ctx context.Context, in *UserLoginRequest, opts ...grpc.CallOption) (*TokenResponse, error)
+	List(ctx context.Context, in *UserListRequest, opts ...grpc.CallOption) (*UserListResponse, error)
 }
 
 type userClient struct {
@@ -369,7 +369,7 @@ func NewUserClient(cc *grpc.ClientConn) UserClient {
 	return &userClient{cc}
 }
 
-func (c *userClient) Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*TokenResponse, error) {
+func (c *userClient) Login(ctx context.Context, in *UserLoginRequest, opts ...grpc.CallOption) (*TokenResponse, error) {
 	out := new(TokenResponse)
 	err := c.cc.Invoke(ctx, "/pb.User/Login", in, out, opts...)
 	if err != nil {
@@ -378,8 +378,8 @@ func (c *userClient) Login(ctx context.Context, in *LoginRequest, opts ...grpc.C
 	return out, nil
 }
 
-func (c *userClient) List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*ListResponse, error) {
-	out := new(ListResponse)
+func (c *userClient) List(ctx context.Context, in *UserListRequest, opts ...grpc.CallOption) (*UserListResponse, error) {
+	out := new(UserListResponse)
 	err := c.cc.Invoke(ctx, "/pb.User/List", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -389,18 +389,18 @@ func (c *userClient) List(ctx context.Context, in *ListRequest, opts ...grpc.Cal
 
 // UserServer is the server API for User service.
 type UserServer interface {
-	Login(context.Context, *LoginRequest) (*TokenResponse, error)
-	List(context.Context, *ListRequest) (*ListResponse, error)
+	Login(context.Context, *UserLoginRequest) (*TokenResponse, error)
+	List(context.Context, *UserListRequest) (*UserListResponse, error)
 }
 
 // UnimplementedUserServer can be embedded to have forward compatible implementations.
 type UnimplementedUserServer struct {
 }
 
-func (*UnimplementedUserServer) Login(ctx context.Context, req *LoginRequest) (*TokenResponse, error) {
+func (*UnimplementedUserServer) Login(ctx context.Context, req *UserLoginRequest) (*TokenResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Login not implemented")
 }
-func (*UnimplementedUserServer) List(ctx context.Context, req *ListRequest) (*ListResponse, error) {
+func (*UnimplementedUserServer) List(ctx context.Context, req *UserListRequest) (*UserListResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
 }
 
@@ -409,7 +409,7 @@ func RegisterUserServer(s *grpc.Server, srv UserServer) {
 }
 
 func _User_Login_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(LoginRequest)
+	in := new(UserLoginRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -421,13 +421,13 @@ func _User_Login_Handler(srv interface{}, ctx context.Context, dec func(interfac
 		FullMethod: "/pb.User/Login",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServer).Login(ctx, req.(*LoginRequest))
+		return srv.(UserServer).Login(ctx, req.(*UserLoginRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _User_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListRequest)
+	in := new(UserListRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -439,7 +439,7 @@ func _User_List_Handler(srv interface{}, ctx context.Context, dec func(interface
 		FullMethod: "/pb.User/List",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServer).List(ctx, req.(*ListRequest))
+		return srv.(UserServer).List(ctx, req.(*UserListRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -461,7 +461,7 @@ var _User_serviceDesc = grpc.ServiceDesc{
 	Metadata: "user.proto",
 }
 
-func (m *LoginRequest) Marshal() (dAtA []byte, err error) {
+func (m *UserLoginRequest) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -471,12 +471,12 @@ func (m *LoginRequest) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *LoginRequest) MarshalTo(dAtA []byte) (int, error) {
+func (m *UserLoginRequest) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *LoginRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *UserLoginRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -528,7 +528,7 @@ func (m *TokenResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *ListRequest) Marshal() (dAtA []byte, err error) {
+func (m *UserListRequest) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -538,12 +538,12 @@ func (m *ListRequest) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *ListRequest) MarshalTo(dAtA []byte) (int, error) {
+func (m *UserListRequest) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *ListRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *UserListRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -570,7 +570,7 @@ func (m *ListRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *ListResponse) Marshal() (dAtA []byte, err error) {
+func (m *UserListResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -580,12 +580,12 @@ func (m *ListResponse) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *ListResponse) MarshalTo(dAtA []byte) (int, error) {
+func (m *UserListResponse) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *ListResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *UserListResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -663,7 +663,7 @@ func encodeVarintUser(dAtA []byte, offset int, v uint64) int {
 	dAtA[offset] = uint8(v)
 	return base
 }
-func (m *LoginRequest) Size() (n int) {
+func (m *UserLoginRequest) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -693,7 +693,7 @@ func (m *TokenResponse) Size() (n int) {
 	return n
 }
 
-func (m *ListRequest) Size() (n int) {
+func (m *UserListRequest) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -714,7 +714,7 @@ func (m *ListRequest) Size() (n int) {
 	return n
 }
 
-func (m *ListResponse) Size() (n int) {
+func (m *UserListResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -757,7 +757,7 @@ func sovUser(x uint64) (n int) {
 func sozUser(x uint64) (n int) {
 	return sovUser(uint64((x << 1) ^ uint64((int64(x) >> 63))))
 }
-func (m *LoginRequest) Unmarshal(dAtA []byte) error {
+func (m *UserLoginRequest) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -780,10 +780,10 @@ func (m *LoginRequest) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: LoginRequest: wiretype end group for non-group")
+			return fmt.Errorf("proto: UserLoginRequest: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: LoginRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: UserLoginRequest: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -959,7 +959,7 @@ func (m *TokenResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *ListRequest) Unmarshal(dAtA []byte) error {
+func (m *UserListRequest) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -982,10 +982,10 @@ func (m *ListRequest) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: ListRequest: wiretype end group for non-group")
+			return fmt.Errorf("proto: UserListRequest: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: ListRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: UserListRequest: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -1082,7 +1082,7 @@ func (m *ListRequest) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *ListResponse) Unmarshal(dAtA []byte) error {
+func (m *UserListResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -1105,10 +1105,10 @@ func (m *ListResponse) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: ListResponse: wiretype end group for non-group")
+			return fmt.Errorf("proto: UserListResponse: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: ListResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: UserListResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:

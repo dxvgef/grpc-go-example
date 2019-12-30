@@ -20,8 +20,15 @@ func startGRpcServer() {
 	// 创建一个grpc服务的实例
 	svr := grpc.NewServer()
 
-	// 注册service.User服务
+	// 注册user服务
 	pb.RegisterUserServer(svr, &action.User{
+		MetaData: &action.MetaData{
+			TokenStr: "",
+		},
+	})
+
+	// 注册content服务
+	pb.RegisterContentServer(svr, &action.Content{
 		MetaData: &action.MetaData{
 			TokenStr: "",
 		},

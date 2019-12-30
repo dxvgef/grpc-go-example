@@ -38,8 +38,15 @@ func startGrpcGatewayServer() {
 	)
 	opts := []grpc.DialOption{grpc.WithInsecure()}
 
-	// 注册endpoint（上游的grpc服务的地址和端口）
+	// 注册user服务的端点
 	err := pb.RegisterUserHandlerFromEndpoint(ctx, gwMux, "127.0.0.1:3000", opts)
+	if err != nil {
+		log.Fatalln(err.Error())
+		return
+	}
+
+	// 注册content服务的端点
+	err := pb.RegisterContentHandlerFromEndpoint(ctx, gwMux, "127.0.0.1:3001", opts)
 	if err != nil {
 		log.Fatalln(err.Error())
 		return

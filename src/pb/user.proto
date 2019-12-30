@@ -11,15 +11,16 @@ option (gogoproto.goproto_unkeyed_all) = false;
 option (gogoproto.goproto_unrecognized_all) = false;
 option (gogoproto.goproto_sizecache_all) = false;
 
+
 // 定义User服务
 service User {
-    rpc Login (LoginRequest) returns (TokenResponse) {
+    rpc Login (UserLoginRequest) returns (TokenResponse) {
         option (google.api.http) = {
             post: "/user/login"
             body: "*"
         };
     }
-    rpc List (ListRequest) returns (ListResponse) {
+    rpc List (UserListRequest) returns (UserListResponse) {
         option (google.api.http) = {
             get: "/user/list"
         };
@@ -27,7 +28,7 @@ service User {
 }
 
 // 登录请求
-message LoginRequest {
+message UserLoginRequest {
     string username = 1;
     string password = 2;
 }
@@ -38,13 +39,13 @@ message TokenResponse {
 }
 
 // 列表请求
-message ListRequest {
+message UserListRequest {
     repeated string columns = 1;    // 可查询的字段
     int32 page = 2; // 页码
     int32 pageSize = 3; // 页大小
 }
 // 列表响应
-message ListResponse {
+message UserListResponse {
     repeated UserListModel rows = 1;    // 记录集
     int32 total = 2;    // 记录总数
 }

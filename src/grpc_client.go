@@ -39,7 +39,7 @@ func startGrpcClient() {
 	ctx, _ := context.WithTimeout(context.Background(), 3*time.Second)
 
 	// 执行服务端方法，并发送metaData
-	loginResp, err := c.Login(ctx, &pb.LoginRequest{
+	loginResp, err := c.Login(ctx, &pb.UserLoginRequest{
 		Username: "test",
 		Password: "123456",
 	})
@@ -57,7 +57,7 @@ func startGrpcClient() {
 	// 下面这行是带token的请求
 	metaData := metadata.NewOutgoingContext(ctx, metadata.Pairs("token", loginResp.Token))
 
-	listResp, err := c.List(metaData, &pb.ListRequest{
+	listResp, err := c.List(metaData, &pb.UserListRequest{
 		Columns:  []string{"id", "username"},
 		Page:     1,
 		PageSize: 10,
