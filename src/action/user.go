@@ -42,7 +42,6 @@ func (self *User) Login(ctx context.Context, req *pb.LoginRequest) (*pb.TokenRes
 }
 
 func (self *User) List(ctx context.Context, req *pb.ListRequest) (*pb.ListResponse, error) {
-	log.Println("收到客户端请求 User.List()")
 
 	// 执行并获得认证结果
 	if err := self.MetaData.AuthToken(ctx); err != nil {

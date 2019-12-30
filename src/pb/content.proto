@@ -11,31 +11,32 @@ option (gogoproto.goproto_unkeyed_all) = false;
 option (gogoproto.goproto_unrecognized_all) = false;
 option (gogoproto.goproto_sizecache_all) = false;
 
-// 定义User服务
-service User {
-    rpc Login (LoginRequest) returns (TokenResponse) {
+// 定义Content服务
+service Content {
+    rpc Add (AddRequest) returns (AddResponse) {
         option (google.api.http) = {
-            post: "/user/login"
+            post: "/content/add"
             body: "*"
         };
     }
     rpc List (ListRequest) returns (ListResponse) {
         option (google.api.http) = {
-            get: "/user/list"
+            get: "/content/list"
         };
     }
 }
 
-// 登录请求
-message LoginRequest {
-    string username = 1;
-    string password = 2;
+// 增加请求
+message AddRequest {
+    string title = 1;
+    string body = 2;
 }
 
-// 响应token
-message TokenResponse {
-    string token = 1;
+// 增加响应
+message AddResponse {
+    int64 id = 1;
 }
+
 
 // 列表请求
 message ListRequest {
@@ -49,9 +50,9 @@ message ListResponse {
     int32 total = 2;    // 记录总数
 }
 
-// 用户列表字段
-message UserListModel {
+// 内容列表字段
+message ContentListModel {
     int64 id = 1 [(gogoproto.jsontag) = "id,string", (gogoproto.moretags) = "pg:\"id\""];
-    string username = 2 [(gogoproto.moretags) = "pg:\"username\""];
+    string title = 2 [(gogoproto.moretags) = "pg:\"title\""];
     int64 createTime = 3 [(gogoproto.moretags) = "pg:\"create_time\""];
 }

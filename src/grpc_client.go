@@ -14,6 +14,7 @@ import (
 )
 
 func startGrpcClient() {
+	log.Println("客户端开始调用...")
 	// 连接服务端
 	dialCtx, _ := context.WithTimeout(context.Background(), 3*time.Second)
 	conn, err := grpc.DialContext(
