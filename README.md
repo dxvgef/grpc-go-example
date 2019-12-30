@@ -8,7 +8,7 @@ gRPC以及gRPC Gateway的Golang示例
 - [x] gRPC Gateway将JSON与gRPC互相转换
 - [x] 自定义gRPC Gateway的错误输出
 - [ ] 整合zerolog
-- [ ] 实现方法调用时的身份验证
+- [x] 实现方法调用时的Token认证
 
 #### 安装相关命令行工具：
 ```

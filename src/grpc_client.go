@@ -50,9 +50,12 @@ func startGrpcClient() {
 		return
 	}
 
-	log.Println("服务端响应：", loginResp.Token)
+	// 下面这行是不带token的请求
+	// metaData := ctx
 
+	// 下面这行是带token的请求
 	metaData := metadata.NewOutgoingContext(ctx, metadata.Pairs("token", loginResp.Token))
+
 	listResp, err := c.List(metaData, &pb.ListRequest{
 		Columns:  []string{"id", "username"},
 		Page:     1,

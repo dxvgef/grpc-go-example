@@ -3,6 +3,7 @@ module local
 go 1.13
 
 require (
+	github.com/gbrlsnchs/jwt/v3 v3.0.0-rc.1
 	github.com/go-pg/pg/v9 v9.1.0
 	github.com/gogo/protobuf v1.3.1
 	github.com/golang/protobuf v1.3.2
