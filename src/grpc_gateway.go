@@ -46,7 +46,7 @@ func startGrpcGatewayServer() {
 	}
 
 	// 注册content服务的端点
-	err := pb.RegisterContentHandlerFromEndpoint(ctx, gwMux, "127.0.0.1:3001", opts)
+	err = pb.RegisterContentHandlerFromEndpoint(ctx, gwMux, "127.0.0.1:3001", opts)
 	if err != nil {
 		log.Fatalln(err.Error())
 		return
